@@ -25,7 +25,7 @@ opts = {
   rotVelX: .001,
   rotVelY: .0009,
 
-  repaintColor: '#111',
+  repaintColor: '#000',  // Set to black
   connectionColor: 'hsla(174,63%,light%,alp)',
   rootColor: 'hsla(214,31%,light%,alp)',
   endColor: 'hsla(160,20%,light%,alp)',
@@ -38,9 +38,9 @@ opts = {
   focalLength: 300,
   vanishPoint: {
     x: w / 2,
-    y: h / 2 } },
-
-
+    y: h / 2
+  }
+},
 
 squareRange = opts.range * opts.range,
 squareAllowed = opts.allowedDist * opts.allowedDist,
@@ -231,7 +231,7 @@ Data.prototype.step = function () {
 Data.prototype.draw = function () {
 
   if (this.ended)
-  return --this.ended; // not sre why the thing lasts 2 frames, but it does
+  return --this.ended; // not sure why the thing lasts 2 frames, but it does
 
   ctx.beginPath();
   ctx.strokeStyle = this.screen.color;
@@ -337,10 +337,6 @@ function anim() {
   all.sort(function (a, b) {return b.screen.z - a.screen.z;});
   all.map(function (item) {item.draw();});
 
-  /*ctx.beginPath();
-  ctx.strokeStyle = 'red';
-  ctx.arc( opts.vanishPoint.x, opts.vanishPoint.y, opts.range * opts.focalLength / opts.depth, 0, Tau );
-  ctx.stroke();*/
 }
 
 window.addEventListener('resize', function () {
